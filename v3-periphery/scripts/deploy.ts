@@ -2,7 +2,6 @@ import { ethers } from 'hardhat'
 
 const config = {
   uniswapFactory: '0x1F98431c8aD98523631AE4a59f267346ea31F984',
-  WETH9: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
   nativeCurrencyLabel: ethers.utils.formatBytes32String('ETH'),
 }
 
@@ -11,6 +10,11 @@ async function main() {
   const multicall2 = await multicall2Factory.deploy()
   await multicall2.deployed()
   console.log('Multicall2 deployed to:', multicall2.address)
+
+  const weth9Factory = await ethers.getContractFactory('WETH9')
+  const weth9 = await weth9Factory.deploy()
+  await weth9.deployed()
+  console.log('WETH9 deployed to:', weth9.address)
 
   const swapRouterFactory = await ethers.getContractFactory('SwapRouter')
   const swapRouter = await swapRouterFactory.deploy(config.uniswapFactory, config.WETH9)
