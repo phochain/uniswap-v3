@@ -17,7 +17,7 @@ async function main() {
   console.log('WETH9 deployed to:', weth9.address)
 
   const swapRouterFactory = await ethers.getContractFactory('SwapRouter')
-  const swapRouter = await swapRouterFactory.deploy(config.uniswapFactory, config.WETH9)
+  const swapRouter = await swapRouterFactory.deploy(config.uniswapFactory, weth9.address)
   await swapRouter.deployed()
   console.log('SwapRouter deployed to:', swapRouter.address)
 
@@ -35,7 +35,7 @@ async function main() {
     }
   )
   const nonfungibleTokenPositionDescriptor = await nonfungibleTokenPositionDescriptorFactory.deploy(
-    config.WETH9,
+    weth9.address,
     config.nativeCurrencyLabel
   )
   await nonfungibleTokenPositionDescriptor.deployed()
@@ -44,7 +44,7 @@ async function main() {
   const nonfungiblePositonManagerFactory = await ethers.getContractFactory('NonfungiblePositionManager')
   const nonfungiblePositionManager = await nonfungiblePositonManagerFactory.deploy(
     config.uniswapFactory,
-    config.WETH9,
+    weth9.address,
     nonfungibleTokenPositionDescriptor.address
   )
   await nonfungiblePositionManager.deployed()
