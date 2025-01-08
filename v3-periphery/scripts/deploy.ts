@@ -1,11 +1,13 @@
 import { ethers } from 'hardhat'
 
 const config = {
-  uniswapFactory: '0x1F98431c8aD98523631AE4a59f267346ea31F984',
-  nativeCurrencyLabel: ethers.utils.formatBytes32String('ETH'),
+  uniswapFactory: '0xC2D8Ce7F2C1977A03993C989C168Cf3Aae921bE2',
+  nativeCurrencyLabel: ethers.utils.formatBytes32String('PHO'),
 }
 
 async function main() {
+  console.log(config)
+
   const multicall2Factory = await ethers.getContractFactory('Multicall2')
   const multicall2 = await multicall2Factory.deploy()
   await multicall2.deployed()

@@ -46,12 +46,23 @@ export default {
     },
     customChain: {
       url: `http://3.27.216.225:8000`,
+      accounts: [`${process.env.PRIVATE_KEY}`],
     },
   },
   etherscan: {
     // Your API key for Etherscan
     // Obtain one at https://etherscan.io/
     apiKey: process.env.ETHERSCAN_API_KEY,
+    customChains: [
+      {
+        network: 'customChain',
+        chainId: 2605,
+        urls: {
+          apiURL: "http://13.236.52.168/api",
+          browserURL: "http://13.236.52.168"
+        }
+      }
+    ]
   },
   solidity: {
     version: '0.7.6',

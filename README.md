@@ -7,6 +7,7 @@ Open `v3-core` folder
 Run following command:
 ```sh
 yarn
+export PRIVATE_KEY={deploy private key}
 yarn hardhat run scripts/deploy.ts --network customChain
 ```
 
@@ -23,5 +24,6 @@ Change `config` variables as follow:
 After that run following command:
 ```sh
 yarn
+export PRIVATE_KEY={deploy private key}
 yarn hardhat run scripts/deploy.ts --network customChain
 ```
