@@ -1,7 +1,7 @@
 import { ethers } from 'hardhat'
 
 const config = {
-  uniswapFactory: '0xC2D8Ce7F2C1977A03993C989C168Cf3Aae921bE2',
+  uniswapFactory: '0x5d153Ee9B34D0A349a52F6d85b10Ff947E605563',
   nativeCurrencyLabel: ethers.utils.formatBytes32String('PHO'),
 }
 

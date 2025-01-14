@@ -79,24 +79,22 @@ export default {
       url: `https://optimism-mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`,
     },
     customChain: {
-      url: `http://3.27.216.225:8000`,
+      url: `https://testnet.pho-chain.com`,
       accounts: [`${process.env.PRIVATE_KEY}`],
     },
   },
   etherscan: {
-    // Your API key for Etherscan
-    // Obtain one at https://etherscan.io/
     apiKey: process.env.ETHERSCAN_API_KEY,
     customChains: [
       {
         network: 'customChain',
         chainId: 2605,
         urls: {
-          apiURL: "http://13.236.52.168/api",
-          browserURL: "http://13.236.52.168"
-        }
-      }
-    ]
+          apiURL: "https://testnet.pho-scan.com/api",
+          browserURL: "https://testnet.pho-scan.com",
+        },
+      },
+    ],
   },
   solidity: {
     compilers: [DEFAULT_COMPILER_SETTINGS],

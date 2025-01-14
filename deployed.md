@@ -1,8 +1,15 @@
-UniswapV3Factory deployed to: 0xC2D8Ce7F2C1977A03993C989C168Cf3Aae921bE2<br>
-UniswapV3PoolDeployer deployed to: 0x2612304965A04e56C6B1009f671b2332626f3C14<br>
-Multicall2 deployed to: 0xa1a1A14a32722140aaD14f6e3850d1a4A6aE8e82<br>
-WETH9 deployed to: 0x9884FD9891f6EE3Ac7e6362f39aF2586b386b930<br>
-SwapRouter deployed to: 0xC49b97583dE661c1cE94d740C3ae7fBaFEbb99C8<br>
-NFTDescriptor deployed to: 0x2275a32a48D7F6c6f01632d56e9cb68b186C4d8D<br>
-NonfungibleTokenPositionDescriptor deployed to: 0x5fc06541cfd4eC6266689901B48C49E4c5889d8D<br>
-NonfungiblePositionManager deployed to: 0xc9959c94E6C8CcB6455f41aC00e8aC91C2Ecc178<br>
+UniswapV3Factory deployed to: 0x5d153Ee9B34D0A349a52F6d85b10Ff947E605563
+
+UniswapV3PoolDeployer deployed to: 0x06ed417Bcdfb65DA3b0230C019b0d21aC4f9dEAD
+
+Multicall2 deployed to: 0xC49b97583dE661c1cE94d740C3ae7fBaFEbb99C8
+
+WETH9 deployed to: 0x2275a32a48D7F6c6f01632d56e9cb68b186C4d8D
+
+SwapRouter deployed to: 0x5fc06541cfd4eC6266689901B48C49E4c5889d8D
+
+NFTDescriptor deployed to: 0xc9959c94E6C8CcB6455f41aC00e8aC91C2Ecc178
+
+NonfungibleTokenPositionDescriptor deployed to: 0xD3a1c44f807BB3699E39569D6075915D81451b50
+
+NonfungiblePositionManager deployed to: 0x6BefA40d11AD20fc17E7f3e100681883F263B533
