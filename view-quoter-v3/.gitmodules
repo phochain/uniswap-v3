@@ -1,0 +1,3 @@
+[submodule "lib/forge-std"]
+	path = view-quoter-v3/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
