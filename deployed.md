@@ -13,3 +13,5 @@ NFTDescriptor deployed to: 0xc9959c94E6C8CcB6455f41aC00e8aC91C2Ecc178
 NonfungibleTokenPositionDescriptor deployed to: 0xD3a1c44f807BB3699E39569D6075915D81451b50
 
 NonfungiblePositionManager deployed to: 0x6BefA40d11AD20fc17E7f3e100681883F263B533
+
+Quoter deployed to: 0xF6E1a5d2364E48bB937A4F8BdCDe3E9d663CEda6
