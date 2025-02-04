@@ -78,8 +78,12 @@ export default {
     optimism: {
       url: `https://optimism-mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`,
     },
-    customChain: {
-      url: `https://testnet.pho-chain.com`,
+    bnbtest: {
+      url: `https://bsc-testnet-rpc.publicnode.com`,
+      accounts: [`${process.env.PRIVATE_KEY}`],
+    },
+    phoTest: {
+      url: `https://testnet.phochain.com`,
       accounts: [`${process.env.PRIVATE_KEY}`],
     },
   },
@@ -87,11 +91,11 @@ export default {
     apiKey: process.env.ETHERSCAN_API_KEY,
     customChains: [
       {
-        network: 'customChain',
-        chainId: 2605,
+        network: 'phoTest',
+        chainId: 3106,
         urls: {
-          apiURL: "https://testnet.pho-scan.com/api",
-          browserURL: "https://testnet.pho-scan.com",
+          apiURL: "https://testnet.phoscan.com/api",
+          browserURL: "https://testnet.phoscan.com",
         },
       },
     ],
