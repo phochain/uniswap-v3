@@ -50,7 +50,7 @@ export default {
       accounts: [`${process.env.PRIVATE_KEY}`],
     },
     phoTest: {
-      url: `https://testnet.phochain.com`,
+      url: `https://testnet.phochain.org`,
       accounts: [`${process.env.PRIVATE_KEY}`],
     },
   },
@@ -61,8 +61,8 @@ export default {
         network: 'phoTest',
         chainId: 3106,
         urls: {
-          apiURL: "https://testnet.phoscan.com/api",
-          browserURL: "https://testnet.phoscan.com",
+          apiURL: "https://testnet.phoscan.org/api",
+          browserURL: "https://testnet.phoscan.org",
         },
       },
     ],
