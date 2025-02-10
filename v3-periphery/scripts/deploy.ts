@@ -13,7 +13,7 @@ async function main() {
   await multicall2.deployed()
   console.log('Multicall2 deployed to:', multicall2.address)
 
-  const weth9Factory = await ethers.getContractFactory('WETH9')
+  const weth9Factory = await ethers.getContractFactory('WPHO')
   const weth9 = await weth9Factory.deploy()
   await weth9.deployed()
   console.log('WETH9 deployed to:', weth9.address)
