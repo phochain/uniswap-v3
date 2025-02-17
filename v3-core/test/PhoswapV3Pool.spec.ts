@@ -1,9 +1,9 @@
 import { ethers, waffle } from 'hardhat'
 import { BigNumber, BigNumberish, constants, Wallet } from 'ethers'
 import { TestERC20 } from '../typechain/TestERC20'
-import { UniswapV3Factory } from '../typechain/UniswapV3Factory'
-import { MockTimeUniswapV3Pool } from '../typechain/MockTimeUniswapV3Pool'
-import { TestUniswapV3SwapPay } from '../typechain/TestUniswapV3SwapPay'
+import { PhoswapV3Factory } from '../typechain/PhoswapV3Factory'
+import { MockTimePhoswapV3Pool } from '../typechain/MockTimePhoswapV3Pool'
+import { TestPhoswapV3SwapPay } from '../typechain/TestPhoswapV3SwapPay'
 import checkObservationEquals from './shared/checkObservationEquals'
 import { expect } from './shared/expect'
 
@@ -27,8 +27,8 @@ import {
   MIN_SQRT_RATIO,
   SwapToPriceFunction,
 } from './shared/utilities'
-import { TestUniswapV3Callee } from '../typechain/TestUniswapV3Callee'
-import { TestUniswapV3ReentrantCallee } from '../typechain/TestUniswapV3ReentrantCallee'
+import { TestPhoswapV3Callee } from '../typechain/TestPhoswapV3Callee'
+import { TestPhoswapV3ReentrantCallee } from '../typechain/TestPhoswapV3ReentrantCallee'
 import { TickMathTest } from '../typechain/TickMathTest'
 import { SwapMathTest } from '../typechain/SwapMathTest'
 
@@ -36,17 +36,17 @@ const createFixtureLoader = waffle.createFixtureLoader
 
 type ThenArg<T> = T extends PromiseLike<infer U> ? U : T
 
-describe('UniswapV3Pool', () => {
+describe('PhoswapV3Pool', () => {
   let wallet: Wallet, other: Wallet
 
   let token0: TestERC20
   let token1: TestERC20
   let token2: TestERC20
 
-  let factory: UniswapV3Factory
-  let pool: MockTimeUniswapV3Pool
+  let factory: PhoswapV3Factory
+  let pool: MockTimePhoswapV3Pool
 
-  let swapTarget: TestUniswapV3Callee
+  let swapTarget: TestPhoswapV3Callee
 
   let swapToLowerPrice: SwapToPriceFunction
   let swapToHigherPrice: SwapToPriceFunction
@@ -623,7 +623,7 @@ describe('UniswapV3Pool', () => {
 
   // the combined amount of liquidity that the pool is initialized with (including the 1 minimum liquidity that is burned)
   const initializeLiquidityAmount = expandTo18Decimals(2)
-  async function initializeAtZeroTick(pool: MockTimeUniswapV3Pool): Promise<void> {
+  async function initializeAtZeroTick(pool: MockTimePhoswapV3Pool): Promise<void> {
     await pool.initialize(encodePriceSqrt(1, 1))
     const tickSpacing = await pool.tickSpacing()
     const [min, max] = [getMinTick(tickSpacing), getMaxTick(tickSpacing)]
@@ -1346,7 +1346,7 @@ describe('UniswapV3Pool', () => {
     })
   })
 
-  // https://github.com/Uniswap/uniswap-v3-core/issues/214
+  // https://github.com/Phoswap/uniswap-v3-core/issues/214
   it('tick transition cannot run twice if zero for one swap ends at fractional price just below tick', async () => {
     pool = await createPool(FeeAmount.MEDIUM, 1)
     const sqrtTickMath = (await (await ethers.getContractFactory('TickMathTest')).deploy()) as TickMathTest
@@ -1685,8 +1685,8 @@ describe('UniswapV3Pool', () => {
 
     it('cannot reenter from swap callback', async () => {
       const reentrant = (await (
-        await ethers.getContractFactory('TestUniswapV3ReentrantCallee')
-      ).deploy()) as TestUniswapV3ReentrantCallee
+        await ethers.getContractFactory('TestPhoswapV3ReentrantCallee')
+      ).deploy()) as TestPhoswapV3ReentrantCallee
 
       // the tests happen in solidity
       await expect(reentrant.swapToReenter(pool.address)).to.be.revertedWith('Unable to reenter')
@@ -1969,10 +1969,10 @@ describe('UniswapV3Pool', () => {
   })
 
   describe('swap underpayment tests', () => {
-    let underpay: TestUniswapV3SwapPay
+    let underpay: TestPhoswapV3SwapPay
     beforeEach('deploy swap test', async () => {
-      const underpayFactory = await ethers.getContractFactory('TestUniswapV3SwapPay')
-      underpay = (await underpayFactory.deploy()) as TestUniswapV3SwapPay
+      const underpayFactory = await ethers.getContractFactory('TestPhoswapV3SwapPay')
+      underpay = (await underpayFactory.deploy()) as TestPhoswapV3SwapPay
       await token0.approve(underpay.address, constants.MaxUint256)
       await token1.approve(underpay.address, constants.MaxUint256)
       await pool.initialize(encodePriceSqrt(1, 1))

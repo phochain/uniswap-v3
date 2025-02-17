@@ -1,9 +1,9 @@
 import Decimal from 'decimal.js'
 import { BigNumber, BigNumberish, Wallet } from 'ethers'
 import { ethers, waffle } from 'hardhat'
-import { MockTimeUniswapV3Pool } from '../typechain/MockTimeUniswapV3Pool'
+import { MockTimePhoswapV3Pool } from '../typechain/MockTimePhoswapV3Pool'
 import { TickMathTest } from '../typechain/TickMathTest'
-import { UniswapV3PoolSwapTest } from '../typechain/UniswapV3PoolSwapTest'
+import { PhoswapV3PoolSwapTest } from '../typechain/PhoswapV3PoolSwapTest'
 import { expect } from './shared/expect'
 
 import { poolFixture } from './shared/fixtures'
@@ -48,7 +48,7 @@ function applySqrtRatioBipsHundredthsDelta(sqrtRatio: BigNumber, bipsHundredths:
   )
 }
 
-describe('UniswapV3Pool arbitrage tests', () => {
+describe('PhoswapV3Pool arbitrage tests', () => {
   let wallet: Wallet, arbitrageur: Wallet
 
   let loadFixture: ReturnType<typeof createFixtureLoader>
@@ -95,8 +95,8 @@ describe('UniswapV3Pool arbitrage tests', () => {
               pool,
             })
 
-            const testerFactory = await ethers.getContractFactory('UniswapV3PoolSwapTest')
-            const tester = (await testerFactory.deploy()) as UniswapV3PoolSwapTest
+            const testerFactory = await ethers.getContractFactory('PhoswapV3PoolSwapTest')
+            const tester = (await testerFactory.deploy()) as PhoswapV3PoolSwapTest
 
             const tickMathFactory = await ethers.getContractFactory('TickMathTest')
             const tickMath = (await tickMathFactory.deploy()) as TickMathTest
@@ -118,9 +118,9 @@ describe('UniswapV3Pool arbitrage tests', () => {
           let swapToHigherPrice: SwapFunction
           let swapToLowerPrice: SwapFunction
           let swapExact1For0: SwapFunction
-          let pool: MockTimeUniswapV3Pool
+          let pool: MockTimePhoswapV3Pool
           let mint: MintFunction
-          let tester: UniswapV3PoolSwapTest
+          let tester: PhoswapV3PoolSwapTest
           let tickMath: TickMathTest
 
           beforeEach('load the fixture', async () => {

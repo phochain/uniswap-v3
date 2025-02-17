@@ -2,7 +2,7 @@
 pragma solidity =0.7.6;
 pragma abicoder v2;
 
-import '@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3FlashCallback.sol';
+import '@uniswap/v3-core/contracts/interfaces/callback/IPhoswapV3FlashCallback.sol';
 import '@uniswap/v3-core/contracts/libraries/LowGasSafeMath.sol';
 
 import '../base/PeripheryPayments.sol';
@@ -13,8 +13,8 @@ import '../libraries/TransferHelper.sol';
 import '../interfaces/ISwapRouter.sol';
 
 /// @title Flash contract implementation
-/// @notice An example contract using the Uniswap V3 flash function
-contract PairFlash is IUniswapV3FlashCallback, PeripheryPayments {
+/// @notice An example contract using the Phoswap V3 flash function
+contract PairFlash is IPhoswapV3FlashCallback, PeripheryPayments {
     using LowGasSafeMath for uint256;
     using LowGasSafeMath for int256;
 
@@ -124,7 +124,7 @@ contract PairFlash is IUniswapV3FlashCallback, PeripheryPayments {
     function initFlash(FlashParams memory params) external {
         PoolAddress.PoolKey memory poolKey =
             PoolAddress.PoolKey({token0: params.token0, token1: params.token1, fee: params.fee1});
-        IUniswapV3Pool pool = IUniswapV3Pool(PoolAddress.computeAddress(factory, poolKey));
+        IPhoswapV3Pool pool = IPhoswapV3Pool(PoolAddress.computeAddress(factory, poolKey));
         // recipient of borrowed amounts
         // amount of token0 requested to borrow
         // amount of token1 requested to borrow

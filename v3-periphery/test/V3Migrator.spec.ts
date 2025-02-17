@@ -2,8 +2,8 @@ import { Fixture } from 'ethereum-waffle'
 import { constants, Contract, Wallet } from 'ethers'
 import { ethers, waffle } from 'hardhat'
 import {
-  IUniswapV2Pair,
-  IUniswapV3Factory,
+  IPhoswapV2Pair,
+  IPhoswapV3Factory,
   IWETH9,
   MockTimeNonfungiblePositionManager,
   TestERC20,
@@ -12,7 +12,7 @@ import {
 import completeFixture from './shared/completeFixture'
 import { v2FactoryFixture } from './shared/externalFixtures'
 
-import { abi as PAIR_V2_ABI } from '@uniswap/v2-core/build/UniswapV2Pair.json'
+import { abi as PAIR_V2_ABI } from '@uniswap/v2-core/build/PhoswapV2Pair.json'
 import { expect } from 'chai'
 import { FeeAmount } from './shared/constants'
 import { encodePriceSqrt } from './shared/encodePriceSqrt'
@@ -25,7 +25,7 @@ describe('V3Migrator', () => {
 
   const migratorFixture: Fixture<{
     factoryV2: Contract
-    factoryV3: IUniswapV3Factory
+    factoryV3: IPhoswapV3Factory
     token: TestERC20
     weth9: IWETH9
     nft: MockTimeNonfungiblePositionManager
@@ -58,12 +58,12 @@ describe('V3Migrator', () => {
   }
 
   let factoryV2: Contract
-  let factoryV3: IUniswapV3Factory
+  let factoryV3: IPhoswapV3Factory
   let token: TestERC20
   let weth9: IWETH9
   let nft: MockTimeNonfungiblePositionManager
   let migrator: V3Migrator
-  let pair: IUniswapV2Pair
+  let pair: IPhoswapV2Pair
 
   let loadFixture: ReturnType<typeof waffle.createFixtureLoader>
 
@@ -85,7 +85,7 @@ describe('V3Migrator', () => {
 
     const pairAddress = await factoryV2.getPair(token.address, weth9.address)
 
-    pair = new ethers.Contract(pairAddress, PAIR_V2_ABI, wallet) as IUniswapV2Pair
+    pair = new ethers.Contract(pairAddress, PAIR_V2_ABI, wallet) as IPhoswapV2Pair
 
     await token.transfer(pair.address, 10000)
     await weth9.transfer(pair.address, 10000)

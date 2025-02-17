@@ -2,7 +2,7 @@
 pragma solidity >=0.7.0;
 pragma abicoder v2;
 
-import '@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol';
+import '@uniswap/v3-core/contracts/interfaces/IPhoswapV3Pool.sol';
 import '@uniswap/v3-core/contracts/libraries/TickMath.sol';
 import '@uniswap/v3-core/contracts/libraries/BitMath.sol';
 import '@uniswap/v3-core/contracts/libraries/FullMath.sol';
@@ -112,7 +112,7 @@ library NFTDescriptor {
         return
             string(
                 abi.encodePacked(
-                    'This NFT represents a liquidity position in a Uniswap V3 ',
+                    'This NFT represents a liquidity position in a Phoswap V3 ',
                     quoteTokenSymbol,
                     '-',
                     baseTokenSymbol,
@@ -160,7 +160,7 @@ library NFTDescriptor {
         return
             string(
                 abi.encodePacked(
-                    'Uniswap - ',
+                    'Phoswap - ',
                     feeTier,
                     ' - ',
                     escapeQuotes(params.quoteTokenSymbol),
